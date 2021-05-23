@@ -1,0 +1,12 @@
+{
+  "name": "sg3rdata",
+  "version": "0.0.1",
+  "description": "Singapore 3R data",
+  "keywords": [
+    "singapore",
+    "3r",
+    "data"
+  ],
+  "author": "Lim Chee Aun <cheeaun@gmail.com>",
+  "license": "ISC"
+}

@@ -1,0 +1,42 @@
+name: flat
+
+on:
+  push:
+    paths:
+      - .github/workflows/flat.yml # Only run a new workflow every time this file (flat.yaml) file changes
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+    
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup deno
+      uses: denolib/setup-deno@v2
+    - name: Check out repo
+      uses: actions/checkout@v2
+    - name: Fetch data
+      uses: githubocto/flat@v2
+      with:
+        http_url: 'https://www.nea.gov.sg/api/OneMap/GetMapData/secondhandcollecn'
+        downloaded_filename: secondhandcollecn.txt
+        postprocess: ./postprocess.ts
+    - name: Fetch data
+      uses: githubocto/flat@v2
+      with:
+        http_url: 'https://www.nea.gov.sg/api/OneMap/GetMapData/cashfortrash'
+        downloaded_filename: cashfortrash.txt
+        postprocess: ./postprocess.ts
+    - name: Fetch data
+      uses: githubocto/flat@v2
+      with:
+        http_url: 'https://www.nea.gov.sg/api/OneMap/GetMapData/ewaste'
+        downloaded_filename: ewaste.txt
+        postprocess: ./postprocess.ts
+    - name: Fetch data
+      uses: githubocto/flat@v2
+      with:
+        http_url: 'https://www.nea.gov.sg/api/OneMap/GetMapData/lighting'
+        downloaded_filename: lighting.txt
+        postprocess: ./postprocess.ts
