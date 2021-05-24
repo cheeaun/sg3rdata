@@ -9,7 +9,7 @@ const jsonData = JSON.parse(data).SrchResults.slice(1);
 const geojsonFilename = filename.replace(/\.txt$/, '.geojson');
 const geoJSONData = {
   type: 'FeatureCollection',
-  features: jsonData.map(d => ({
+  features: jsonData.map((d: any) => ({
     type: 'Feature',
     properties: d,
     geometry: {
