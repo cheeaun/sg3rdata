@@ -14,7 +14,7 @@ const geoJSONData = {
     properties: d,
     geometry: {
       type: 'Point',
-      coordinates: d.LatLng.split(',').reverse(),
+      coordinates: d.LatLng.split(',').reverse().map(Number),
     },
   })),
 };
